@@ -1,0 +1,50 @@
+name: 'dbt_ockero'
+version: '1.0.0'
+
+profile: 'dbt-ockero'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+vars:
+  source_linked_server_2: "SOURCE_SERVER"
+  source_linked_server: "DATASJÖ"
+
+on-run-end:
+
+flags:
+  dbt_sqlserver_use_default_schema_concat: False
+
+models:
+  dbt_ockero:
+    1-brons:
+      +materialized: table
+      +schema: brons
+      +tags: brons
+
+      elin:
+        +tags: elin   
+
+    2-silver:
+      +materialized: view
+      +schema: silver
+      +tags: silver
+
+      disabled:
+        +enabled: false
+
+    3-guld:
+      +materialized: table
+      +schema: guld
+      +tags: guld
+
+      disabled:
+        +enabled: false

@@ -1,0 +1,1 @@
+select * from {{ linked_source('OckeroDatabase', 'elin', 'exportskolformer') }}

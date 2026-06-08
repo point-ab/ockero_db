@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: brons_api
+    database: ockero_db
+    schema: brons_api
+    description: "Tabeller inlästa via SchoolSoft API. Ersätts med linked server (linked_source) när ingest-flödet är på plats."
+    tables:
+      - name: schoolsoft_schools
+      - name: schoolsoft_studentgrades
+      - name: schoolsoft_subjects
+      - name: schoolsoft_csv_ea_barn
+      - name: schoolsoft_csv_ea_elever
