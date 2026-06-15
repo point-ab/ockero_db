@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ockero-ingest"
+version = "1.0.0"
+authors = [{name='Mattias', email='mattias.ivarsson@point.design'}]
+description = "Ockero data ingestion pipeline — extracts from Schoolsoft, Elevinformation and SS12000 into SQL Server"
+
+requires-python = ">=3.8"
+
+dependencies = [
+    "typer",
+    "dlt[mssql]==1.18.2",
+    "sqlalchemy",
+    "pyodbc",
+    "pyyaml",
+    "python-dotenv==1.2.1",
+    "chardet",
+    "pandas"
+]
+
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ockero_ingest*"]
+
+
+[project.scripts]
+ockero-run = "ockero_ingest.cli:app"

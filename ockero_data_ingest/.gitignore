@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+.env
+build/
+ockero_ingest.egg-info/
+
+# dlt specific
+.dlt/
+.dlt/*
+secrets.toml
+*.key
+*.pem
+.dlt/pipelines/
+schemas/export/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Data files (if you're storing locally)
+data/
+*.parquet
+*.csv
+*.json
+*.duckdb
+*.duckdb.wal
+*.json
+!package.json  # if you have one

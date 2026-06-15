@@ -1,0 +1,36 @@
+destination:
+  schema: "brons_api"
+
+sources:
+  schoolsoft:
+    enabled: false
+    base_url: "https://sms.schoolsoft.se/ockero/"
+    resources:
+      schools: true
+      students: false
+      studentgrades: true
+      subjects: true
+
+  elin:
+    enabled: false
+    base_url: "https://elevinformation.se/api"
+    method: "gbg"
+    kommunkod: "1407"
+
+  schoolsoft_csv:
+    enabled: true
+    import_dir: "\\\\10.0.0.7\\UKF - Pilot Share\\import_data"
+    files:
+      ea_elever: "Schoolsoft EA elever.csv"
+      ea_barn: "Schoolsoft EA barn.csv"
+
+  ss12000:
+    enabled: false
+    base_url: "https://sms.schoolsoft.se/ockero/ss12000/v2/"
+    resources:
+      persons: true
+      duties: true
+      placements: false
+      organisations: true
+      groups: true
+      activities: false
