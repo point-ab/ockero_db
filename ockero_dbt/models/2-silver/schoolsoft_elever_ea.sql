@@ -30,7 +30,16 @@ union all
 )
 
     select
-        *
+        cast(personnummer           as varchar(32)) as personnummer
+        ,cast(kommun_folkbokföring  as varchar(64)) as kommun_folkbokföring
+        ,cast(årskull               as int)         as årskull
+        ,cast(skolform              as varchar(32)) as skolform
+        ,cast(skola                 as varchar(64)) as skola
+        ,cast(klass                 as varchar(32)) as klass
+        ,cast(post_ort              as varchar(32)) as post_ort
+        ,cast(intern_extern         as varchar(16)) as intern_extern
+        ,senaste_uppdaterad
+
         ,case   when cast(substring(personnummer, 11, 1) as int) % 2 = 0 then 'Flicka'
                 when cast(substring(personnummer, 11, 1) as int) % 2 = 1 then 'Pojke' end as kön
 
@@ -38,9 +47,10 @@ union all
         ,case   when kommun_folkbokföring = 'Öckerö'    then 1
                 when kommun_folkbokföring is not null   then 0 else -1 end  as is_öckerö_kommun
         ,case   when intern_extern = 'Intern'           then 1
-                when intern_extern = 'Extern'           then 0    else -1 end as is_kommunal_verksamhet
+                when intern_extern = 'Extern'           then 0  else -1 end as is_kommunal_verksamhet
     from
         ea_barn
     where
          personnummer not like '%TF%'
     and skolform is not null
+    and skolform <> ''

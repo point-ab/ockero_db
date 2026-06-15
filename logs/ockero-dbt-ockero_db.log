@@ -1,0 +1,60 @@
+04:00:02  Running with dbt=1.11.11
+04:00:03  Registered adapter: sqlserver=1.9.2
+04:00:03  Found 24 models, 5 sources, 521 macros
+04:00:03  
+04:00:03  Concurrency: 1 threads (target='dev')
+04:00:03  
+04:00:03  1 of 24 START sql table model brons.elin_export_data ........................... [RUN]
+04:00:04  1 of 24 OK created sql table model brons.elin_export_data ...................... [OK in 0.44s]
+04:00:04  2 of 24 START sql table model brons.elin_export_data_skolformer ................ [RUN]
+04:00:04  2 of 24 OK created sql table model brons.elin_export_data_skolformer ........... [OK in 0.10s]
+04:00:04  3 of 24 START sql table model brons.schoolsoft_api_ea_barn ..................... [RUN]
+04:00:04  3 of 24 OK created sql table model brons.schoolsoft_api_ea_barn ................ [OK in 0.07s]
+04:00:04  4 of 24 START sql table model brons.schoolsoft_api_ea_elever ................... [RUN]
+04:00:04  4 of 24 OK created sql table model brons.schoolsoft_api_ea_elever .............. [OK in 0.14s]
+04:00:04  5 of 24 START sql table model brons.schoolsoft_api_schools ..................... [RUN]
+04:00:04  5 of 24 OK created sql table model brons.schoolsoft_api_schools ................ [OK in 0.08s]
+04:00:04  6 of 24 START sql table model brons.schoolsoft_api_studentgrades ............... [RUN]
+04:00:06  6 of 24 OK created sql table model brons.schoolsoft_api_studentgrades .......... [OK in 1.38s]
+04:00:06  7 of 24 START sql table model brons.schoolsoft_api_subjects .................... [RUN]
+04:00:06  7 of 24 OK created sql table model brons.schoolsoft_api_subjects ............... [OK in 0.08s]
+04:00:06  8 of 24 START sql table model brons.schoolsoft_organisation_school_types ....... [RUN]
+04:00:06  8 of 24 OK created sql table model brons.schoolsoft_organisation_school_types .. [OK in 0.14s]
+04:00:06  9 of 24 START sql table model brons.schoolsoft_organisations ................... [RUN]
+04:00:06  9 of 24 OK created sql table model brons.schoolsoft_organisations .............. [OK in 0.11s]
+04:00:06  10 of 24 START sql table model brons.schoolsoft_person_group_memberships ....... [RUN]
+04:00:06  10 of 24 OK created sql table model brons.schoolsoft_person_group_memberships .. [OK in 0.30s]
+04:00:06  11 of 24 START sql table model brons.schoolsoft_persons ........................ [RUN]
+04:00:07  11 of 24 OK created sql table model brons.schoolsoft_persons ................... [OK in 1.16s]
+04:00:07  12 of 24 START sql table model brons.schoolsoft_persons_addresses .............. [RUN]
+04:00:08  12 of 24 OK created sql table model brons.schoolsoft_persons_addresses ......... [OK in 0.26s]
+04:00:08  13 of 24 START sql table model brons.schoolsoft_persons_enrolments ............. [RUN]
+04:00:08  13 of 24 OK created sql table model brons.schoolsoft_persons_enrolments ........ [OK in 0.18s]
+04:00:08  14 of 24 START sql table model brons.schoolsoft_placement_persons .............. [RUN]
+04:00:08  14 of 24 OK created sql table model brons.schoolsoft_placement_persons ......... [OK in 0.13s]
+04:00:08  15 of 24 START sql table model brons.schoolsoft_placements ..................... [RUN]
+04:00:08  15 of 24 OK created sql table model brons.schoolsoft_placements ................ [OK in 0.21s]
+04:00:08  16 of 24 START sql view model silver.elin_elever ............................... [RUN]
+04:00:08  16 of 24 OK created sql view model silver.elin_elever .......................... [OK in 0.05s]
+04:00:08  17 of 24 START sql view model silver.schoolsoft_elever_ea ...................... [RUN]
+04:00:08  17 of 24 OK created sql view model silver.schoolsoft_elever_ea ................. [OK in 0.04s]
+04:00:08  18 of 24 START sql view model silver.schoolsoft_skola .......................... [RUN]
+04:00:08  18 of 24 OK created sql view model silver.schoolsoft_skola ..................... [OK in 0.03s]
+04:00:08  19 of 24 START sql table model guld_skola.d_elever_ea .......................... [RUN]
+04:00:09  19 of 24 OK created sql table model guld_skola.d_elever_ea ..................... [OK in 0.36s]
+04:00:09  20 of 24 START sql table model guld_skola.d_skola .............................. [RUN]
+04:00:09  20 of 24 OK created sql table model guld_skola.d_skola ......................... [OK in 0.09s]
+04:00:09  21 of 24 START sql view model silver.schoolsoft_elever ......................... [RUN]
+04:00:09  21 of 24 OK created sql view model silver.schoolsoft_elever .................... [OK in 0.05s]
+04:00:09  22 of 24 START sql table model guld_skola.d_elever ............................. [RUN]
+04:00:09  22 of 24 OK created sql table model guld_skola.d_elever ........................ [OK in 0.48s]
+04:00:09  23 of 24 START sql view model silver.schoolsoft_betyg .......................... [RUN]
+04:00:10  23 of 24 OK created sql view model silver.schoolsoft_betyg ..................... [OK in 0.04s]
+04:00:10  24 of 24 START sql table model guld_skola.f_betyg .............................. [RUN]
+04:00:13  24 of 24 OK created sql table model guld_skola.f_betyg ......................... [OK in 2.34s]
+04:00:13  
+04:00:13  Finished running 19 table models, 5 view models in 0 hours 0 minutes and 9.58 seconds (9.58s).
+04:00:13  
+04:00:13  Completed successfully
+04:00:13  
+04:00:13  Done. PASS=24 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=24

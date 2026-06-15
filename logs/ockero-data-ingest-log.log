@@ -1,0 +1,66 @@
+
+[94m======================================== OCKERO DATA INGEST========================================[0m
+
+05:00:04  Starting pipeline run
+05:00:04  
+05:00:04  [1m=============== SOURCE 1/2: SCHOOLSOFT=============== [0m
+05:00:04  
+05:00:04  1 of 2 START schoolsoft .................................................. [RUN]
+Fetching schools from /export/schools.jsp
+Parsed 20 rows, columns: ['orgid', 'name', 'description', 'authority', 'active', 'schoolcodeyh', 'schoolunitgymn11', 'schoolunitgrund11', 'schoolunitsargrund11', 'schoolunitsargymn13', 'schoolunitvux12', 'schoolunitvuxs12', 'schoolunitsfi12', 'gymnschool11', 'sargrundschool11', 'sargymnschool13', 'vux12', 'vuxs12', 'sfi12', 'yh', 'grundschool11', 'preschool', 'codecsn', 'teacherid', 'fname', 'lname', 'email', 'address1', 'address2', 'pocode', 'city', 'districtcode', 'webapp', 'logoname', 'parentorgid', 'externalid', 'externalref', 'extraschoolunit', 'guid']
+Fetching studentgrades from /export/studentgradesubjects.jsp
+Parsed 70168 rows, columns: ['orgid', 'studentid', 'socialnumber', 'class', 'gradeclass', 'fname', 'lname', 'gradesubject', 'gradesubjectid', 'specialization', 'specializationid', 'archive', 'archiveid', 'term', 'year', 'teacher', 'teacherid', 'grade', 'gradeid', 'gradedate', 'catalogid', 'finalgrade', 'active', 'schooltype', 'printdate']
+Fetching subjects from /export/gradesubjects.jsp
+Parsed 318 rows, columns: ['gradesubjectid', 'name', 'description', 'descriptioneng', 'type']
+05:01:49 Running dlt pipeline
+05:01:49
+05:01:49 Pipeline: schoolsoft_pipeline
+05:01:49 Dataset: brons_api
+05:01:49 Package ID: 1781492405.4121523 | State: loaded
+05:01:49 Table: _dlt_version | No completed jobs
+05:01:49 Table: _dlt_loads | No completed jobs
+05:01:49 Table: schoolsoft_studentgrades | Files: 1 | Size: 1623282 bytes | Time: 66.55s
+05:01:49 Table: schoolsoft_subjects | Files: 1 | Size: 9249 bytes | Time: 66.54s
+05:01:49 Table: _dlt_pipeline_state | No completed jobs
+05:01:49 Table: schoolsoft_schools | Files: 1 | Size: 2327 bytes | Time: 66.55s
+--------------------------------------------------
+05:01:49
+05:01:49 Pipeline schoolsoft_pipeline finished at 05:01:49
+05:01:49
+05:01:49 DONE
+05:01:49  1 of 2 [92mOK[0m schoolsoft .................................................. [92m[OK in 105.28s][0m
+05:01:49  
+05:01:49  [1m=============== SOURCE 2/2: SCHOOLSOFT_CSV=============== [0m
+05:01:49  
+05:01:49  2 of 2 START schoolsoft_csv .............................................. [RUN]
+Schoolsoft EA elever.csv — encoding: utf-8
+Schoolsoft EA elever.csv — delimiter: ','
+Schoolsoft EA barn.csv — encoding: utf-8
+Schoolsoft EA barn.csv — delimiter: ','
+05:01:51 Running dlt pipeline
+05:01:51
+05:01:51 Pipeline: schoolsoft_csv_pipeline
+05:01:51 Dataset: brons_api
+05:01:51 Package ID: 1781492509.6970057 | State: loaded
+05:01:51 Table: _dlt_version | No completed jobs
+05:01:51 Table: _dlt_loads | No completed jobs
+05:01:51 Table: schoolsoft_csv_schoolsoft_ea_elever | No completed jobs
+05:01:51 Table: schoolsoft_csv_schoolsoft_ea_barn | No completed jobs
+05:01:51 Table: _dlt_pipeline_state | No completed jobs
+05:01:51 Table: schoolsoft_csv_ea_elever | Files: 1 | Size: 64433 bytes | Time: 1.26s
+05:01:51 Table: schoolsoft_csv_ea_barn | Files: 1 | Size: 17598 bytes | Time: 1.32s
+--------------------------------------------------
+05:01:51
+05:01:51 Pipeline schoolsoft_csv_pipeline finished at 05:01:51
+05:01:51
+05:01:51 DONE
+05:01:51  2 of 2 [92mOK[0m schoolsoft_csv .............................................. [92m[OK in 1.93s][0m
+05:01:51  __________________________________________________________________________________________
+05:01:51  
+05:01:51  [92mPipeline completed successfully[0m
+05:01:51  Total execution time: [1m107.21s[0m
+05:01:51  
+05:01:51  [92mSummary:[0m
+05:01:51    ✓ schoolsoft - [92mPASS[0m
+05:01:51    ✓ schoolsoft_csv - [92mPASS[0m
+05:01:51  

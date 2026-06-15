@@ -33,12 +33,25 @@ models:
       elin:
         +tags: elin   
 
+      schoolsoft:
+        +tags: schoolsoft   
+
+
+      schoolsoft_api:
+        +tags: schoolsoft_api
+               
+      #REMOVE WHEN VALIDATED
+      old:
+        +enabled: false 
+
+
     2-silver:
       +materialized: view
       +schema: silver
       +tags: silver
-
-      disabled:
+      
+      #REMOVE WHEN VALIDATED
+      old:
         +enabled: false
 
     3-guld:
@@ -46,5 +59,11 @@ models:
       +schema: guld
       +tags: guld
 
-      disabled:
+      skola:
+        +materialized: table
+        +schema: guld_skola
+        +tags: skola      
+      
+      #REMOVE WHEN VALIDATED
+      old:
         +enabled: false

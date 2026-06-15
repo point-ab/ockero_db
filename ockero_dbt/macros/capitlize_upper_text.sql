@@ -1,5 +1,5 @@
 {% macro clean_uppercase_text(column_name) %}
-CASE
+CAST(CASE
     WHEN {{ column_name }} IS NULL THEN NULL
     WHEN LTRIM(RTRIM({{ column_name }})) = '' THEN ''
     WHEN {{ column_name }} = UPPER({{ column_name }})
@@ -39,4 +39,5 @@ CASE
         ' |HYPHEN| ', '-')
     ELSE LTRIM(RTRIM({{ column_name }}))
 END
+AS VARCHAR(200))
 {% endmacro %}

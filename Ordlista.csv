@@ -1,0 +1,55 @@
+﻿Ord;Grupp;Förklaring
+KAA;Begrepp;Kommunalt aktivitetsansvar, för ungdomar 16-20 år
+IMA;Begrepp;Introduktionsprogram för elever som är behöriga till Gymnasiet
+Köpta platser;Begrepp;Elever folkbokförda i Öckerö kommun men går skola i annan kommun eller friskola
+Sålda platser;Begrepp;Elever folkbokförda utanför Öckerö kommun men går i skola i Öckerö kommunala skolor
+Förskola;Skoltyper;Barn 0-6 år, 1 augusti går 6årsbarn(barn som fyller 6 under året) över till grundskola?  (enligt schoolsofts definition av barn)
+Grundskola;Skoltyper;Skoltyp = GR11,   Barn mellan ålder 6-15 som inte går i förskolan, (brytdatum 1 augusti)
+Gymnasieskola;Skoltyper;Skoltyp = GY11, GY25
+Anpassad grundskola;Skoltyper;Skoltyp = GRAN
+BO;Skoltyper;Barnomsorg (både fritids och förskola)
+GR;Skoltyper;Grundskola
+GR11;Skoltyper;GR11 står för grundskolans läroplan (framtagen 2011)
+GRS;Skoltyper;Anpassad grundskola
+GRS11;Skoltyper;Anpassad grundskolas läroplan
+GRAN;Skoltyper;Anpassad grundskolas läroplan
+GY;Skoltyper;Gymnasieskola
+GY11;Skoltyper;Gymnasieskolans läroplan (2011)
+GY25;Skoltyper;Gymnasieskolans läroplan (2025)
+OPPFTH;Skoltyper;Öppna fritidishem, men används inte.
+FKLASS;Skoltyper;Förskoleklass (åk 0)
+FTH;Skoltyper;Fritidshem
+FS;Skoltyper;Fritidshem
+Bergagårdsskolan;Grundskola;Kommunal grundskola
+Björkö skola;Grundskola;Kommunal grundskola
+Brattebergsskolan 4-6;Grundskola;Kommunal grundskola
+Brattebergsskolan 7-9;Grundskola;Kommunal grundskola
+Centrum för lärande;Grundskola;Kommunal grundskola
+Fotö skola;Grundskola;Kommunal grundskola
+Hedens skola 4-6;Grundskola;Kommunal grundskola
+Hedens skola 7-9;Grundskola;Kommunal grundskola
+Kompassenskolan;Grundskola;Kommunal grundskola
+Kulturskolan;Grundskola;Kulturskoleverksamhet, ska inte vara med.
+Rörö skola;Grundskola;Kommunal grundskola
+Öckerö Seglande gymnasieskola;Gymnasieskola;Kommunal Gymnasieskola
+Björkö Förskola;Förskola;Kommunal förskola
+Brattebergs förskola;Förskola;Kommunal förskola
+Fotö förskola;Förskola;Kommunal förskola
+Hedens förskola;Förskola;Kommunal förskola
+Hälsö förskola;Förskola;Kommunal förskola
+Högåsens förskola;Förskola;Kommunal förskola
+Rörö förskola;Förskola;Kommunal förskola
+Vipekärrs Förskola;Förskola;Kommunal förskola
+Schoolsoft;System;Skolplattformen
+Schoolsoft (EA);System;Elev admin
+Schoolsoft (LP);System;Läroplattform
+ELIN;System;Data för gymnasium
+Antal folkbokförda Öckerö kommun;Power BI;Barn och elever med address Öckerö kommun, ingen address tolkas som inte Öckerö
+Antal elever inom kommunalverksamhet;Power BI;Elever som är placerade i Öckerös kommuns verksamheter
+Antal elever köpta platser;Power BI;Elever som är folkbokförda i Öckerös kommuna men går inte i deras kommunala verksamhet
+Antal elever sålda platser;Power BI;Elever inom Öckerös kommunala verksamhet som har address utanför Öckerös kommun
+Årskurs G1, G2, G3;Power BI;Gymnasium år 1,2,3 - För att inte blanda ihop med grundskolan årskurs 1 etc
+Antalalet elever Betyg F;Power BI;Antalet Elever som har fått betyg F eller saknas betyg. Detta sätts per ämne
+Andelen elever med betyg A-E;Power BI;Hur många elever som har godkänt dividerat med alla elever. Detta sätt per ämne
+Andelen elever med betyg A-E;Power BI;Hur många elever har godkänt i alla ämnen. Detta sätts per elev
+Andelen elever med godkänt i alla kärnämnen;Power BI;Hur många elever har godkänt i Mattematik, Svenska och Engelska. Detta sätts per elev

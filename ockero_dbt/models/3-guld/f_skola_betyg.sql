@@ -1,1 +1,0 @@
-select * from {{ ref('schoolsoft_skola') }}

@@ -73,15 +73,15 @@ select
     ,personnummer
     ,skola_id
     ,start_datum_skola
-    ,födelseår
+    ,cast(födelseår as int) as födelseår
     ,kön
     ,ålder
    -- ,elev_gruppering
     ,elev_gruppering as skolform
-    ,skola_namn
+    ,cast(skola_namn as varchar(100)) as skola_namn
     ,årskurs
     ,klass
-    ,post_ort
+    ,cast(post_ort as varchar(100)) as post_ort
     ,post_kod
     ,is_aktiv_elev
     ,is_öckerö_kommun

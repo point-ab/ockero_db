@@ -1,0 +1,1 @@
+select * from {{ ref('schoolsoft_betyg') }}
