@@ -7,6 +7,8 @@ from ockero_ingest.dlt_extract.source_schoolsoft import schoolsoft_source
 from ockero_ingest.dlt_extract.source_elin import load_elin_data
 from ockero_ingest.dlt_extract.source_schoolsoft_csv import load_data_csv_file
 from ockero_ingest.dlt_extract.source_ss12000 import load_ss12000_data
+from ockero_ingest.dlt_extract.source_skola24 import load_skola24_data
+from ockero_ingest.dlt_extract.source_skola24_test import load_skola24_data_test
 
 load_dotenv()
 
@@ -15,6 +17,8 @@ _SOURCE_FACTORIES = {
     "elin": load_elin_data,
     "schoolsoft_csv": load_data_csv_file,
     "ss12000": load_ss12000_data,
+    "skola24": load_skola24_data,
+    "skola24_test": load_skola24_data_test,
 }
 
 

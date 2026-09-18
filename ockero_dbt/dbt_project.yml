@@ -39,7 +39,10 @@ models:
 
       schoolsoft_api:
         +tags: schoolsoft_api
-               
+
+      skola24:
+        +tags: skola24
+
       #REMOVE WHEN VALIDATED
       old:
         +enabled: false 

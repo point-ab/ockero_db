@@ -11,3 +11,11 @@ sources:
       - name: schoolsoft_subjects
       - name: schoolsoft_csv_ea_barn
       - name: schoolsoft_csv_ea_elever
+      # Skola24 Samverkansprogram (SS12000) via dlt, se ockero_data_ingest/source_skola24.py
+      - name: skola24_organisations
+      - name: skola24_persons
+      - name: skola24_group_memberships
+      - name: skola24_activities
+      - name: skola24_calendar_events
+      - name: skola24_calendar_events__rooms
+      - name: skola24_attendances

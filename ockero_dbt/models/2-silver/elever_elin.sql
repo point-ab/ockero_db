@@ -1,4 +1,8 @@
-with student_step1 as (
+with 
+elever as (select * from {{ ref('elever_anonymisering') }} 
+), 
+
+student_step1 as (
 
     select
         substring(personnummer, 1, 4)
@@ -34,9 +38,9 @@ skolform as (
 
 student_final as (
     select
-        cast(dense_rank() over (order by b.personnummer) as varchar) as elev_id
-        ,b.personnummer                               as personnummer
-        ,b.csnkod                                     as skola_id
+        e.elev_id
+        ,b.personnummer  as personnummer
+        ,b.csnkod       as skola_id
         ,cast(b.handelsedatum as date)                              as start_datum_skola
         --Student
         ,left(b.födelsedag, 4) as födelseår
@@ -55,12 +59,28 @@ student_final as (
         ,{{ clean_uppercase_text('b.FolkbokforingsadressOrt') }} as post_ort
         --Flaggor
         ,1 as is_aktiv_elev
-        ,1 as is_öckerö_kommun
+       -- ,1 as is_öckerö_kommun
+        ,case
+        when substring(b.FolkbokforingsadressPostnummer, 1, 3) = '475'  then 1
+        when coalesce(b.FolkbokforingsadressPostnummer, '') = ''        then -1
+        when b.FolkbokforingsadressPostnummer in (
+             '430 90' --Öckerö
+            ,'430 93' --Hälsö
+            ,'430 94' --Bohus-Björkö
+            ,'430 95' --Källö-Knippla
+            ,'430 92' --Fotö
+            ,'430 97' --Rörö
+            ,'430 96' --Hyppeln
+        )       then 1 else 0 end as is_öckerö_kommun
+
+
+
         ,case when b.SkolaNamn = 'Öckerö seglande gymnasieskola' then 1 else 0 end as is_kommunal_verksamhet
         ,row_number() over (partition by b.personnummer order by b.handelsedatum desc) as is_unik_person
         ,case when a.handelsedatum > b.handelsedatum then 1 else 0 end as is_avbrott
     from
                 student_step1   as b
+    left join   elever          as e on b.personnummer = e.personnummer
     left join   skolform        as s on b.sourceordinal = s.handelsesourceordinal
     --Joinar på avbrott, dvs elever som blivit antagna med sedan gjort avbrott, dessa ska inte med i statistiken
     left join   avbrott         as a on     a.personnummer = b.personnummer

@@ -1,6 +1,6 @@
 select 
     elev_id
-    --,personnummer
+    ,personnummer
     ,skola_id
     ,is_aktiv_elev
     ,skolform
@@ -24,13 +24,13 @@ select
     --,efternamn
     --,födelsedag
     --,ålders_grupp	
-from {{ ref('schoolsoft_elever') }}
+from {{ ref('elever_schoolsoft') }}
 
 union all
 
 select 
     elev_id
-   -- ,null as personnummer
+    ,personnummer
     ,skola_id
     ,is_aktiv_elev
     ,skolform
@@ -46,4 +46,6 @@ select
     ,is_kommunal_verksamhet
     ,senaste_uppdaterad
 from
-    {{ref('elin_elever')}}  
+    {{ref('elever_elin')}}  
+where 
+    skola_namn <> 'Öckerö Seglande gymnasieskola' --Finns i skolsoft

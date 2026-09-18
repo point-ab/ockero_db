@@ -1,1 +1,1 @@
-select * from {{ ref('schoolsoft_skola') }}
+select * from {{ ref('skola_schoolsoft') }}

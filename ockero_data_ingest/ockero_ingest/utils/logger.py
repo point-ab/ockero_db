@@ -15,6 +15,26 @@ class Colors:
     END = '\033[0m'
 
 
+class StepLogger:
+    """dbt-style per-request progress logger for fine-grained work inside a
+    single resource (one line per request/batch, with a row count) --
+    complements PipelineLogger, which logs at the whole-source level.
+    '<i> of <total> <endpoint> ... [OK <n> rows in <t>s]'."""
+
+    def __init__(self, endpoint, total):
+        self.endpoint = endpoint
+        self.total = total
+        self.i = 0
+
+    def log(self, detail, n_rows, elapsed):
+        self.i += 1
+        ts = datetime.now().strftime("%H:%M:%S")
+        msg = f"{self.endpoint}  {detail}"
+        dots = "." * max(50 - len(msg), 3)
+        tag = f"{Colors.GREEN}OK{Colors.END}" if n_rows else f"{Colors.YELLOW}--{Colors.END}"
+        print(f"{ts}  {self.i} of {self.total} {msg} {dots} [{tag} {n_rows} rows in {elapsed:.2f}s]")
+
+
 class PipelineLogger:
     """Clean terminal output logger for pipeline execution"""
     
@@ -98,7 +118,7 @@ class PipelineLogger:
         self.print_with_timestamp(f"{Colors.GREEN}Summary:{Colors.END}")
         
         for step in steps:
-            self.print_with_timestamp(f"  ✓ {step['name']} - {Colors.GREEN}PASS{Colors.END}")
+            self.print_with_timestamp(f"  [OK] {step['name']} - {Colors.GREEN}PASS{Colors.END}")
         
         self.print_with_timestamp("")
     

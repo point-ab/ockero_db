@@ -1,66 +1,176 @@
+2026-09-18 05:00:42,462|[WARNING]|5240|6772|dlt|validate.py|verify_normalized_table:91|In schema `skola24`: The following columns in table 'skola24_activities' did not receive any data during this load and therefore could not have their types inferred:
+  - meta
+
+Unless type hints are provided, these columns will not be materialized in the destination.
+One way to provide type hints is to use the 'columns' argument in the '@dlt.resource' decorator.  For example:
+
+@dlt.resource(columns={'meta': {'data_type': 'text'}})
+
+2026-09-18 05:00:42,462|[WARNING]|5240|6772|dlt|validate.py|verify_normalized_table:91|In schema `skola24`: The following columns in table 'skola24_activities__teachers' did not receive any data during this load and therefore could not have their types inferred:
+  - start_date
+  - end_date
+
+Unless type hints are provided, these columns will not be materialized in the destination.
+One way to provide type hints is to use the 'columns' argument in the '@dlt.resource' decorator.  For example:
+
+@dlt.resource(columns={'start_date': {'data_type': 'text'}})
+
+2026-09-18 05:00:42,462|[WARNING]|5240|6772|dlt|validate.py|verify_normalized_table:91|In schema `skola24`: The following columns in table 'skola24_attendances' did not receive any data during this load and therefore could not have their types inferred:
+  - calendar_event__display_name
+  - reporter__id
+  - reporter__display_name
+
+Unless type hints are provided, these columns will not be materialized in the destination.
+One way to provide type hints is to use the 'columns' argument in the '@dlt.resource' decorator.  For example:
+
+@dlt.resource(columns={'calendar_event__display_name': {'data_type': 'text'}})
+
+2026-09-18 05:00:42,462|[WARNING]|5240|6772|dlt|validate.py|verify_normalized_table:91|In schema `skola24`: The following columns in table 'skola24_calendar_events' did not receive any data during this load and therefore could not have their types inferred:
+  - teaching_length_teacher
+  - teaching_length_student
+  - comment
+
+Unless type hints are provided, these columns will not be materialized in the destination.
+One way to provide type hints is to use the 'columns' argument in the '@dlt.resource' decorator.  For example:
+
+@dlt.resource(columns={'teaching_length_teacher': {'data_type': 'text'}})
+
+2026-09-18 05:00:42,462|[WARNING]|5240|6772|dlt|validate.py|verify_normalized_table:91|In schema `skola24`: The following columns in table 'skola24_group_memberships' did not receive any data during this load and therefore could not have their types inferred:
+  - school_type
+
+Unless type hints are provided, these columns will not be materialized in the destination.
+One way to provide type hints is to use the 'columns' argument in the '@dlt.resource' decorator.  For example:
+
+@dlt.resource(columns={'school_type': {'data_type': 'text'}})
+
+2026-09-18 05:00:42,462|[WARNING]|5240|6772|dlt|validate.py|verify_normalized_table:91|In schema `skola24`: The following columns in table 'skola24_organisations' did not receive any data during this load and therefore could not have their types inferred:
+  - parent_organisation
+
+Unless type hints are provided, these columns will not be materialized in the destination.
+One way to provide type hints is to use the 'columns' argument in the '@dlt.resource' decorator.  For example:
+
+@dlt.resource(columns={'parent_organisation': {'data_type': 'text'}})
+
+2026-09-18 05:00:42,462|[WARNING]|5240|6772|dlt|validate.py|verify_normalized_table:91|In schema `skola24`: The following columns in table 'skola24_persons' did not receive any data during this load and therefore could not have their types inferred:
+  - meta
+  - middle_name
+  - edu_person_principal_names
+  - external_identifiers
+
+Unless type hints are provided, these columns will not be materialized in the destination.
+One way to provide type hints is to use the 'columns' argument in the '@dlt.resource' decorator.  For example:
+
+@dlt.resource(columns={'meta': {'data_type': 'text'}})
+
 
 [94m======================================== OCKERO DATA INGEST========================================[0m
 
 05:00:04  Starting pipeline run
 05:00:04  
-05:00:04  [1m=============== SOURCE 1/2: SCHOOLSOFT=============== [0m
+05:00:04  [1m=============== SOURCE 1/2: SCHOOLSOFT_CSV=============== [0m
 05:00:04  
-05:00:04  1 of 2 START schoolsoft .................................................. [RUN]
-Fetching schools from /export/schools.jsp
-Parsed 20 rows, columns: ['orgid', 'name', 'description', 'authority', 'active', 'schoolcodeyh', 'schoolunitgymn11', 'schoolunitgrund11', 'schoolunitsargrund11', 'schoolunitsargymn13', 'schoolunitvux12', 'schoolunitvuxs12', 'schoolunitsfi12', 'gymnschool11', 'sargrundschool11', 'sargymnschool13', 'vux12', 'vuxs12', 'sfi12', 'yh', 'grundschool11', 'preschool', 'codecsn', 'teacherid', 'fname', 'lname', 'email', 'address1', 'address2', 'pocode', 'city', 'districtcode', 'webapp', 'logoname', 'parentorgid', 'externalid', 'externalref', 'extraschoolunit', 'guid']
-Fetching studentgrades from /export/studentgradesubjects.jsp
-Parsed 70168 rows, columns: ['orgid', 'studentid', 'socialnumber', 'class', 'gradeclass', 'fname', 'lname', 'gradesubject', 'gradesubjectid', 'specialization', 'specializationid', 'archive', 'archiveid', 'term', 'year', 'teacher', 'teacherid', 'grade', 'gradeid', 'gradedate', 'catalogid', 'finalgrade', 'active', 'schooltype', 'printdate']
-Fetching subjects from /export/gradesubjects.jsp
-Parsed 318 rows, columns: ['gradesubjectid', 'name', 'description', 'descriptioneng', 'type']
-05:01:49 Running dlt pipeline
-05:01:49
-05:01:49 Pipeline: schoolsoft_pipeline
-05:01:49 Dataset: brons_api
-05:01:49 Package ID: 1781492405.4121523 | State: loaded
-05:01:49 Table: _dlt_version | No completed jobs
-05:01:49 Table: _dlt_loads | No completed jobs
-05:01:49 Table: schoolsoft_studentgrades | Files: 1 | Size: 1623282 bytes | Time: 66.55s
-05:01:49 Table: schoolsoft_subjects | Files: 1 | Size: 9249 bytes | Time: 66.54s
-05:01:49 Table: _dlt_pipeline_state | No completed jobs
-05:01:49 Table: schoolsoft_schools | Files: 1 | Size: 2327 bytes | Time: 66.55s
---------------------------------------------------
-05:01:49
-05:01:49 Pipeline schoolsoft_pipeline finished at 05:01:49
-05:01:49
-05:01:49 DONE
-05:01:49  1 of 2 [92mOK[0m schoolsoft .................................................. [92m[OK in 105.28s][0m
-05:01:49  
-05:01:49  [1m=============== SOURCE 2/2: SCHOOLSOFT_CSV=============== [0m
-05:01:49  
-05:01:49  2 of 2 START schoolsoft_csv .............................................. [RUN]
+05:00:04  1 of 2 START schoolsoft_csv .............................................. [RUN]
 Schoolsoft EA elever.csv — encoding: utf-8
 Schoolsoft EA elever.csv — delimiter: ','
 Schoolsoft EA barn.csv — encoding: utf-8
 Schoolsoft EA barn.csv — delimiter: ','
-05:01:51 Running dlt pipeline
-05:01:51
-05:01:51 Pipeline: schoolsoft_csv_pipeline
-05:01:51 Dataset: brons_api
-05:01:51 Package ID: 1781492509.6970057 | State: loaded
-05:01:51 Table: _dlt_version | No completed jobs
-05:01:51 Table: _dlt_loads | No completed jobs
-05:01:51 Table: schoolsoft_csv_schoolsoft_ea_elever | No completed jobs
-05:01:51 Table: schoolsoft_csv_schoolsoft_ea_barn | No completed jobs
-05:01:51 Table: _dlt_pipeline_state | No completed jobs
-05:01:51 Table: schoolsoft_csv_ea_elever | Files: 1 | Size: 64433 bytes | Time: 1.26s
-05:01:51 Table: schoolsoft_csv_ea_barn | Files: 1 | Size: 17598 bytes | Time: 1.32s
+05:00:07 Running dlt pipeline
+05:00:07
+05:00:07 Pipeline: schoolsoft_csv_pipeline
+05:00:07 Dataset: brons_api
+05:00:07 Package ID: 1789700405.1229877 | State: loaded
+05:00:07 Table: _dlt_version | No completed jobs
+05:00:07 Table: _dlt_loads | No completed jobs
+05:00:07 Table: schoolsoft_csv_ea_elever | Files: 1 | Size: 64313 bytes | Time: 1.59s
+05:00:07 Table: schoolsoft_csv_ea_barn | Files: 1 | Size: 15909 bytes | Time: 1.66s
 --------------------------------------------------
-05:01:51
-05:01:51 Pipeline schoolsoft_csv_pipeline finished at 05:01:51
-05:01:51
-05:01:51 DONE
-05:01:51  2 of 2 [92mOK[0m schoolsoft_csv .............................................. [92m[OK in 1.93s][0m
-05:01:51  __________________________________________________________________________________________
-05:01:51  
-05:01:51  [92mPipeline completed successfully[0m
-05:01:51  Total execution time: [1m107.21s[0m
-05:01:51  
-05:01:51  [92mSummary:[0m
-05:01:51    ✓ schoolsoft - [92mPASS[0m
-05:01:51    ✓ schoolsoft_csv - [92mPASS[0m
-05:01:51  
+05:00:07
+05:00:07 Pipeline schoolsoft_csv_pipeline finished at 05:00:07
+05:00:07
+05:00:07 DONE
+05:00:07  1 of 2 [92mOK[0m schoolsoft_csv .............................................. [92m[OK in 3.26s][0m
+05:00:07  
+05:00:07  [1m=============== SOURCE 2/2: SKOLA24=============== [0m
+05:00:07  
+05:00:07  2 of 2 START skola24 ..................................................... [RUN]
+05:00:08  1 of 1 organisations  all ................................ [[92mOK[0m 16 rows in 0.62s]
+05:00:08  1 of 16 groups  org 1/16 .................................. [[93m--[0m 0 rows in 0.19s]
+05:00:09  2 of 16 groups  org 2/16 .................................. [[92mOK[0m 40 rows in 0.29s]
+05:00:09  3 of 16 groups  org 3/16 .................................. [[92mOK[0m 93 rows in 0.19s]
+05:00:09  4 of 16 groups  org 4/16 .................................. [[92mOK[0m 99 rows in 0.15s]
+05:00:09  5 of 16 groups  org 5/16 .................................. [[93m--[0m 0 rows in 0.06s]
+05:00:09  6 of 16 groups  org 6/16 .................................. [[93m--[0m 0 rows in 0.06s]
+05:00:09  7 of 16 groups  org 7/16 .................................. [[93m--[0m 0 rows in 0.06s]
+05:00:09  8 of 16 groups  org 8/16 .................................. [[92mOK[0m 97 rows in 0.16s]
+05:00:09  9 of 16 groups  org 9/16 .................................. [[92mOK[0m 104 rows in 0.16s]
+05:00:09  10 of 16 groups  org 10/16 ................................. [[92mOK[0m 2 rows in 0.05s]
+05:00:10  11 of 16 groups  org 11/16 ................................. [[92mOK[0m 41 rows in 0.06s]
+05:00:10  12 of 16 groups  org 12/16 ................................. [[92mOK[0m 2 rows in 0.04s]
+05:00:10  13 of 16 groups  org 13/16 ................................. [[93m--[0m 0 rows in 0.04s]
+05:00:10  14 of 16 groups  org 14/16 ................................. [[93m--[0m 0 rows in 0.04s]
+05:00:10  15 of 16 groups  org 15/16 ................................. [[93m--[0m 0 rows in 0.03s]
+05:00:10  16 of 16 groups  org 16/16 ................................. [[93m--[0m 0 rows in 0.03s]
+05:00:10  1 of 16 activities  org 1/16 .............................. [[93m--[0m 0 rows in 0.03s]
+05:00:10  2 of 16 activities  org 2/16 .............................. [[92mOK[0m 347 rows in 0.05s]
+05:00:10  3 of 16 activities  org 3/16 .............................. [[92mOK[0m 581 rows in 0.07s]
+05:00:10  4 of 16 activities  org 4/16 .............................. [[92mOK[0m 85 rows in 0.02s]
+05:00:10  5 of 16 activities  org 5/16 .............................. [[93m--[0m 0 rows in 0.02s]
+05:00:10  6 of 16 activities  org 6/16 .............................. [[93m--[0m 0 rows in 0.01s]
+05:00:10  7 of 16 activities  org 7/16 .............................. [[93m--[0m 0 rows in 0.01s]
+05:00:10  8 of 16 activities  org 8/16 .............................. [[92mOK[0m 1160 rows in 0.08s]
+05:00:10  9 of 16 activities  org 9/16 .............................. [[92mOK[0m 338 rows in 0.03s]
+05:00:10  10 of 16 activities  org 10/16 ............................. [[93m--[0m 0 rows in 0.01s]
+05:00:10  11 of 16 activities  org 11/16 ............................. [[93m--[0m 0 rows in 0.01s]
+05:00:10  12 of 16 activities  org 12/16 ............................. [[93m--[0m 0 rows in 0.01s]
+05:00:10  13 of 16 activities  org 13/16 ............................. [[93m--[0m 0 rows in 0.01s]
+05:00:10  14 of 16 activities  org 14/16 ............................. [[93m--[0m 0 rows in 0.01s]
+05:00:10  15 of 16 activities  org 15/16 ............................. [[93m--[0m 0 rows in 0.01s]
+05:00:10  16 of 16 activities  org 16/16 ............................. [[93m--[0m 0 rows in 0.01s]
+05:00:12  1 of 5 calendarEvents  org 1/5 2026-08-10 ................ [[93m--[0m 0 rows in 0.03s]
+05:00:12  2 of 5 calendarEvents  org 2/5 2026-08-10 ................ [[93m--[0m 0 rows in 0.02s]
+05:00:12  3 of 5 calendarEvents  org 3/5 2026-08-10 ................ [[93m--[0m 0 rows in 0.02s]
+05:00:13  1 of 5 persons/lookup  300/1445 ids ...................... [[92mOK[0m 300 rows in 2.52s]
+05:00:13  2 of 5 persons/lookup  600/1445 ids ...................... [[92mOK[0m 300 rows in 0.05s]
+05:00:13  3 of 5 persons/lookup  900/1445 ids ...................... [[92mOK[0m 300 rows in 0.04s]
+05:00:13  4 of 5 persons/lookup  1200/1445 ids ..................... [[92mOK[0m 300 rows in 0.04s]
+05:00:13  5 of 5 persons/lookup  1445/1445 ids ..................... [[92mOK[0m 245 rows in 0.03s]
+05:00:13  4 of 5 calendarEvents  org 4/5 2026-08-10 ................ [[92mOK[0m 1955 rows in 0.80s]
+05:00:13  5 of 5 calendarEvents  org 5/5 2026-08-10 ................ [[92mOK[0m 642 rows in 0.27s]
+05:00:14  1 of 5 attendances/lookup  75/361 activities ............. [[92mOK[0m 26961 rows in 3.53s]
+05:00:16  2 of 5 attendances/lookup  150/361 activities ............ [[92mOK[0m 32322 rows in 2.20s]
+05:00:18  3 of 5 attendances/lookup  225/361 activities ............ [[92mOK[0m 30145 rows in 2.06s]
+05:00:20  4 of 5 attendances/lookup  300/361 activities ............ [[92mOK[0m 30205 rows in 2.11s]
+05:00:21  5 of 5 attendances/lookup  361/361 activities ............ [[92mOK[0m 24676 rows in 1.39s]
+05:01:50 Running dlt pipeline
+05:01:50
+05:01:50 Pipeline: skola24_pipeline
+05:01:50 Dataset: brons_api
+05:01:50 Package ID: 1789700407.931477 | State: loaded
+05:01:50 Table: _dlt_version | No completed jobs
+05:01:50 Table: _dlt_loads | No completed jobs
+05:01:50 Table: skola24_organisations | Files: 1 | Size: 1020 bytes | Time: 68.06s
+05:01:50 Table: skola24_group_memberships | Files: 1 | Size: 263538 bytes | Time: 68.06s
+05:01:50 Table: skola24_activities | Files: 1 | Size: 114449 bytes | Time: 68.46s
+05:01:50 Table: skola24_persons | Files: 1 | Size: 77109 bytes | Time: 68.02s
+05:01:50 Table: skola24_attendances | Files: 1 | Size: 8877338 bytes | Time: 68.26s
+05:01:50 Table: skola24_calendar_events | Files: 1 | Size: 142877 bytes | Time: 68.20s
+05:01:50 Table: skola24_activities__groups | Files: 1 | Size: 77560 bytes | Time: 68.43s
+05:01:50 Table: skola24_activities__teachers | Files: 1 | Size: 73890 bytes | Time: 68.40s
+05:01:50 Table: skola24_calendar_events__rooms | Files: 1 | Size: 54202 bytes | Time: 68.18s
+05:01:50 Table: skola24_calendar_events__teacher_exceptions | Files: 1 | Size: 68065 bytes | Time: 68.14s
+05:01:50 Table: skola24_persons__emails | Files: 1 | Size: 1895 bytes | Time: 68.02s
+--------------------------------------------------
+05:01:50
+05:01:50 Pipeline skola24_pipeline finished at 05:01:50
+05:01:50
+05:01:50 DONE
+05:01:50  2 of 2 [92mOK[0m skola24 ..................................................... [92m[OK in 103.01s][0m
+05:01:50  __________________________________________________________________________________________
+05:01:50  
+05:01:50  [92mPipeline completed successfully[0m
+05:01:50  Total execution time: [1m106.26s[0m
+05:01:50  
+05:01:50  [92mSummary:[0m
+05:01:50    [OK] schoolsoft_csv - [92mPASS[0m
+05:01:50    [OK] skola24 - [92mPASS[0m
+05:01:50  

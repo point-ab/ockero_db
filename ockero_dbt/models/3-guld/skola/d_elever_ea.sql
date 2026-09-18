@@ -14,8 +14,9 @@ with alla as (
         ,is_öckerö_kommun
         ,is_kommunal_verksamhet
         ,senaste_uppdaterad
+        ,'schoolsoft' as sql_part
     from
-        {{ref('schoolsoft_elever_ea')}}
+        {{ref('elever_schoolsoft_ea')}}
 
 union all
 
@@ -32,8 +33,12 @@ union all
         ,is_öckerö_kommun
         ,is_kommunal_verksamhet
         ,null as senaste_uppdaterad
+        ,'elin' as sql_part
+
     from
-        {{ref('elin_elever')}}
+        {{ref('elever_elin')}}
+    where 
+        skola_namn <> 'Öckerö Seglande gymnasieskola' --Finns i skolsoft
     )
 
     select
@@ -48,5 +53,10 @@ union all
         ,is_öckerö_kommun
         ,is_kommunal_verksamhet
         ,senaste_uppdaterad
+        ,sql_part
     from
         alla
+
+    where 
+        skolform is not null
+    and skolform <> ''

@@ -34,8 +34,8 @@
     left join   {{ ref('schoolsoft_legacy_subjects') }}         as s    on g.gradesubjectid = s.gradesubjectid
     left join   {{ ref('schoolsoft_legacy_subjects') }}         as m    on g.specializationid = m.gradesubjectid and g.specializationid <> ''
     left join   {{ ref('schoolsoft_legacy_schools')}}           as ss   on g.orgid = ss.orgid
-    left join   {{ ref('schoolsoft_skola')}}                    as o    on o.skola_namn = ss.name
-    left join   {{ ref('schoolsoft_elever')}}                   as e    on e.personnummer = concat('20',replace(g.socialnumber,'-',''))
+    left join   {{ ref('skola_schoolsoft')}}                    as o    on o.skola_namn = ss.name
+    left join   {{ ref('elever_schoolsoft')}}                   as e    on e.personnummer = concat('20',replace(g.socialnumber,'-',''))
 
     where
         cast(left(g.archive,2) as int) > 22

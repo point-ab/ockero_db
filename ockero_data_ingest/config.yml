@@ -34,3 +34,49 @@ sources:
       organisations: true
       groups: true
       activities: false
+
+  skola24:
+    enabled: true
+    base_url: "https://api-samverkansprogram.skola24.se/ss12000/"
+    # OAuth2 token endpoint (client_credentials). Paste from Skola24 Samverkansprogram docs.
+    token_url: "https://login01samverkansprogram.skola24.se/connect/token"
+    # scope: ""    # optional, only if the token endpoint requires a scope
+    persons_batch_size: 300   # ids per POST /persons/lookup call (API max, Person.MaxPostIds)
+    # period of interest. calendar_events are fetched for this range, and
+    # attendances are fetched for the activities that overlap it (each such
+    # activity's FULL history -- the API has no date filter on attendance).
+    # Without the overlap filter the tenant's three school years of finished
+    # activities (~2.7M rows, ~35 min load) would be reloaded every run.
+    # Kept narrow (~4 weeks) for the first production runs; widen once the
+    # loaded data is confirmed correct.
+    calendar_start: "2026-08-10"
+    calendar_end: "2026-09-07"
+    calendar_window_days: 30  # calendar_events: capped at 30 (hard API limit)
+    resources:
+      organisations: true           # org dimension (id, name, type, schoolTypes, ...)
+      persons: true
+      group_memberships: true       # needed to harvest student IDs (persons can't be listed) + org/group join
+      activities: true              # course/class sections; needed to batch attendances + join for course name
+      attendances: true             # per-activity lesson-level detail, batched via attendances/lookup
+      calendar_events: true         # lesson schedule; join on attendance.calendarEvent.id for the date
+
+  # Same API access as `skola24` above, but capped to a small student count
+  # (via dlt's add_limit, see source_skola24_test.py) and loaded into its own
+  # skola24_test_* tables -- for controlled test runs against the real API
+  # that never touch the production skola24_* tables. Run with --skola24-test.
+  skola24_test:
+    enabled: false
+    base_url: "https://api-samverkansprogram.skola24.se/ss12000/"
+    token_url: "https://login01samverkansprogram.skola24.se/connect/token"
+    persons_batch_size: 300
+    max_students: 50   # caps the `persons` resource output (dlt add_limit)
+    calendar_start: "2026-08-10"
+    calendar_end: "2026-09-07"
+    calendar_window_days: 30
+    resources:
+      organisations: true
+      persons: true
+      group_memberships: true
+      activities: true
+      attendances: true
+      calendar_events: true

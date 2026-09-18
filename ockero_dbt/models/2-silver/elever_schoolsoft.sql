@@ -21,11 +21,12 @@
 -- ============================================================
 
 with 
+elever              as (select * from   {{ ref('elever_anonymisering') }}),
 persons             as (select * from   {{ ref('schoolsoft_persons') }}),
 addresses           as (select * from   {{ ref('schoolsoft_persons_addresses') }}),
 placement           as (select * from   {{ ref('schoolsoft_placements') }}),
 placement_persons   as (select * from   {{ ref('schoolsoft_placement_persons') }}),
-organisations       as (select * from   {{ ref('schoolsoft_skola') }}),
+organisations       as (select * from   {{ ref('skola_schoolsoft') }}),
 enrolments_ranked as (
     select
         *
@@ -74,7 +75,7 @@ fritids as (
 -- ============================================================
 enrolment_raw as (
     select
-         p.SourceId                                         as elev_id
+         p.SourceId                                         as elev_id_schoolsoft
         ,p.CivicNo                                          as personnummer
         ,lower(cast(pe.EnroledAtId as nvarchar(36)))        as skola_id
         ,cast(pe.StartDate as date)                         as start_datum_skola       
@@ -118,7 +119,7 @@ enrolment_raw as (
 -- ============================================================
 forskola_raw as (
     select
-         p.SourceId                                         as elev_id
+         p.SourceId                                         as elev_id_schoolsoft
         ,p.CivicNo                                          as personnummer
         ,lower(cast(pl.PlacedAtId as nvarchar(36)))         as skola_id
         ,cast(pl.StartDate as date)                         as start_datum_skola
@@ -157,8 +158,9 @@ alla_elever as (
 )
 
 select
-    elev_id
-    ,personnummer
+    e.elev_id
+    ,a.elev_id_schoolsoft
+    ,a.personnummer
     ,skola_id
     ,is_aktiv_elev
     ,start_datum_skola
@@ -182,7 +184,7 @@ select
     ,is_elev_fritids
     ,{{ clean_uppercase_text('locality') }} as post_ort
     ,post_kod
-    ,case when personnummer like '%tf%' then 1 else 0 end as is_pnr_error
+    ,case when a.personnummer like '%tf%' then 1 else 0 end as is_pnr_error
     ,case
         when substring(post_kod, 1, 3) = '475'  then 1
         when coalesce(post_kod, '') = ''        then -1
@@ -198,6 +200,7 @@ select
     ,is_kommunal_verksamhet
     ,cast(getdate() as date)    as senaste_uppdaterad
 from
-    alla_elever
+            alla_elever as a
+left join   elever      as e on a.elev_id_schoolsoft = e.elev_id_schoolsoft
 where
     cast(floor(datediff(day, birth_date, getdate()) / 365.25) as int) < 25
